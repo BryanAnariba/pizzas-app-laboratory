@@ -1,0 +1,40 @@
+<mat-card class="p-2">
+    <mat-card-header class="flex flex-column align-items-center">
+      <span class="text-lg mb-2 text-center">Sign In</span>
+      <img src="./assets/images/login.png" alt="login-image" mat-card-sm-image>
+    </mat-card-header>
+    <form [formGroup]="signInForm" (ngSubmit)="onSignIn()">
+      <mat-card-content class="flex flex-column">
+        <mat-form-field>
+          <mat-label>User Email: </mat-label>
+          <input
+            type="email"
+            matInput
+            placeholder="example@gmail.com"
+            autofocus
+            formControlName="email"
+          >
+          <!-- <mat-error *ngIf="formValidators.isValidField(signInForm, 'email', isFormSubmited)">Error: <strong>{{formValidators.getFieldError(signInForm, 'email')}}</strong></mat-error> -->
+        </mat-form-field>
+        <mat-form-field class="mt-1">
+          <mat-label>Password: </mat-label>
+          <input 
+            type="password"
+            matInput
+            placeholder="**********"
+            formControlName="password"
+          >
+          <!-- <mat-error *ngIf="formValidators.isValidField(signInForm, 'password', isFormSubmited)">Error: <strong>{{formValidators.getFieldError(signInForm, 'password')}}</strong></mat-error> -->
+        </mat-form-field>
+        
+        <button mat-button mat-flat-button color="primary" class="mt-5" type="submit">
+          <mat-icon>account_circle</mat-icon>
+          Sign In
+        </button>
+  
+        <div class="flex justify-content-end mt-2">
+          <a class="anchor" routerLink="/auth/sign-up">If you dont have an account click here!</a>
+        </div>
+      </mat-card-content>
+    </form>
+  </mat-card>

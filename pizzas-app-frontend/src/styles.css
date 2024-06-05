@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.pointer {
+    cursor: pointer;
+}
+
+.green-color {
+    color: #70a539;
+}
+
+.white-color {
+    color: whitel
+}
+
+.cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.zoom:hover {
+    transition: all 500ms ease-in-out;
+    transform: scale(1.1); 
+}

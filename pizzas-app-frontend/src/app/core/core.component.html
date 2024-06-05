@@ -1,0 +1,43 @@
+<app-spinner></app-spinner>
+
+<mat-toolbar class="mat-elevation-z3" color="primary">
+    <button mat-icon-button (click)="onChangeCollapse()">
+        <mat-icon>menu</mat-icon>
+    </button>
+
+    <div class="ml-auto">
+        <button mat-button (click)="onLogout()">
+            Log Out
+        </button>
+    </div>
+</mat-toolbar>
+
+<mat-sidenav-container>
+    <mat-sidenav opened mode="side" [style.width]="sidenavWith">
+        <div class="sidenav-header pt-4">
+            <div class="header-text" [class.hide-header-text]="collapse">
+                <h2>{{'test@gmail.com'}}</h2>
+                <p>USER</p>
+            </div>
+        </div>
+
+        <mat-nav-list>
+            <a 
+                mat-list-item 
+                routerLinkActive="selected-menu-item"
+                #rla="routerLinkActive"
+                class="menu-item"
+                [activated]="rla.isActive"
+                *ngFor="let item of menuItems" 
+                [routerLink]="item.route"
+            >
+                <mat-icon matListItemIcon>{{item.icon}}</mat-icon>
+                <span matListItemTitle *ngIf="!collapse">{{item.label}}</span>
+            </a>
+        </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content class="p-1" [style.margin-left]="sidenavWith">
+        <router-outlet />
+    </mat-sidenav-content>
+</mat-sidenav-container>

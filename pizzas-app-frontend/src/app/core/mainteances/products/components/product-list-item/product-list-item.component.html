@@ -1,0 +1,17 @@
+<mat-card class="text-center zoom">
+    <div class="p-5">
+        <img [src]="product.picture" [alt]="product.name + ' Image'" class="mx-auto cover" />
+        <div class="w-full">
+            <div>
+                <h5>{{product.category.name}}</h5>
+                <p class="font-semibold">{{product.name}}</p>
+            </div>
+            <div class="flex justify-content-between align-items-center">
+                <span class="font-semibold">{{product.price | currency:'USD'}}</span>
+                <button mat-icon-button>
+                    <mat-icon class="green-color">shopping_cart</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+</mat-card>

@@ -1,0 +1,44 @@
+<mat-toolbar class="w-full justify-content-between" color="primary">
+    <a routerLink="pizzasapp" class="pointer">Pizza Store</a>
+    
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon [matBadge]="1" matBadgeColor="warn" aria-hidden="false">shopping_cart</mat-icon>
+    </button>
+
+    <mat-menu #menu="matMenu">
+        <div class="p-3">
+            <div class="pb-3 flex justify-content-between">
+                <span class="mr-5">1 Product(s)</span>
+                <a routerLink="cart">View Cart</a>
+            </div>
+
+            <div>
+                <div class="flex justify-content-between">
+                    <span class="mr-5">Keyboard x 1</span>
+                    <span class="font-bold">{{250 | currency:'USD'}}</span>
+                </div>
+                <div class="flex justify-content-between">
+                    <span class="mr-5">Keyboard x 1</span>
+                    <span class="font-bold">{{250 | currency:'USD'}}</span>
+                </div>
+                <div class="flex justify-content-between">
+                    <span class="mr-5">Keyboard x 1</span>
+                    <span class="font-bold">{{250 | currency:'USD'}}</span>
+                </div>
+            </div>
+            <hr>
+            <div class="py-3 flex justify-content-between">
+                <span class="mr-5">Total</span>
+                <span class="font-bold">{{750 | currency:'USD'}}</span>
+            </div>
+            <div class="pt-2 flex justify-content-between">
+                <button color="warn" mat-icon-button>
+                    <mat-icon>remove_shopping_cart</mat-icon>
+                </button>
+                <button mat-icon-button>
+                    <mat-icon class="green-color">shopping_cart</mat-icon>
+                </button>
+            </div>
+        </div>
+    </mat-menu>
+</mat-toolbar>

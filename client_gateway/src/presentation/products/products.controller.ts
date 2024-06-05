@@ -1,5 +1,5 @@
 import { join } from 'node:path';
-import { Body, Controller, Delete, Get, HttpStatus, Inject, Param, ParseUUIDPipe, Patch, Post, Query, UploadedFile, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpStatus, Inject, Param, ParseUUIDPipe, Patch, Post, Query, UploadedFile, UseGuards, UseInterceptors } from '@nestjs/common';
 import { catchError } from 'rxjs';
 import { ClientModuleNames } from 'src/enums';
 import { ClientProxy, RpcException } from '@nestjs/microservices';
@@ -8,6 +8,7 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { extname } from 'path';
 import { diskStorage } from 'multer';
 import { NodeFS, UUID } from 'src/config';
+import { AuthGuard } from '../auth/guards/auth.guard';
 
 @Controller('products')
 export class ProductsController {
@@ -16,6 +17,7 @@ export class ProductsController {
     @Inject(ClientModuleNames.NATS_SERVICES) private readonly natsClient: ClientProxy,
   ) {}
 
+  @UseGuards(AuthGuard)
   @Post()
   @UseInterceptors(FileInterceptor('file', {
     fileFilter: (req, file, cb) => {
@@ -59,6 +61,8 @@ export class ProductsController {
         })
       );
   }
+
+  @UseGuards(AuthGuard)
   @Patch(':code')
   updateItem (@Param('code', new ParseUUIDPipe()) code: string, @Body() updateProductDto: UpdateProductDto) {
     return this.natsClient.send({cmd: 'update_product'}, { code: code, ...updateProductDto })
@@ -71,6 +75,7 @@ export class ProductsController {
       );
   }
 
+  @UseGuards(AuthGuard)
   @Delete(':code')
   deleteItem (@Param('code', new ParseUUIDPipe()) code: string) {
     return this.natsClient.send({cmd: 'delete_product'}, {code})

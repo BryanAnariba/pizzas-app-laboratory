@@ -1,0 +1,58 @@
+<mat-card class="p-2">
+    <mat-card-header class="flex flex-column align-items-center">
+      <span class="text-lg mb-2 text-center">Sign In</span>
+      <img src="./assets/images/register.png" alt="register-image" mat-card-sm-image>
+    </mat-card-header>
+    <form [formGroup]="newAccountForm" (ngSubmit)="onNewAccount()">
+      <mat-card-content class="flex flex-column">
+        <mat-form-field>
+          <mat-label>Complete Name: </mat-label>
+          <input 
+            type="text"
+            autofocus
+            matInput
+            placeholder="Write your name"
+            formControlName="name"
+          >
+          <!-- <mat-error *ngIf="formValidators.isValidField(newAccountForm, 'name', isFormSubmited)">Error: <strong>{{formValidators.getFieldError(newAccountForm, 'name')}}</strong></mat-error> -->
+        </mat-form-field>
+        <mat-form-field class="mt-1">
+          <mat-label>User Email: </mat-label>
+          <input
+            type="email"
+            matInput
+            placeholder="example@gmail.com"
+            formControlName="email"
+          >
+          <!-- <mat-error *ngIf="formValidators.isValidField(newAccountForm, 'email', isFormSubmited)">Error: <strong> {{formValidators.getFieldError(newAccountForm, 'email')}}</strong></mat-error> -->
+        </mat-form-field>
+        <mat-form-field class="mt-1">
+          <mat-label>Password: </mat-label>
+          <input 
+            type="password"
+            matInput
+            placeholder="**********"
+            formControlName="password"
+          >
+          <!-- <mat-error  *ngIf="formValidators.isValidField(newAccountForm, 'password', isFormSubmited)">Error: <strong>{{formValidators.getFieldError(newAccountForm, 'password')}}</strong></mat-error> -->
+        </mat-form-field>
+        <mat-form-field class="mt-1">
+          <mat-label>Role: </mat-label>
+          <mat-select formControlName="role">
+            <mat-option selected>Select Role</mat-option>
+            <mat-option *ngFor="let role of roles" [value]="role">{{role}}</mat-option>
+          </mat-select>
+          <!-- <mat-error *ngIf="formValidators.isValidField(newAccountForm, 'role', isFormSubmited)">Error: <strong>{{formValidators.getFieldError(newAccountForm, 'role')}}</strong></mat-error> -->
+        </mat-form-field>
+  
+        <button mat-button mat-flat-button color="primary" class="mt-2">
+          <mat-icon>account_circle</mat-icon>
+          Create New Account
+        </button>
+  
+        <div class="flex justify-content-end mt-2">
+          <a class="anchor" routerLink="/auth/sign-in">If you have an account click here!</a>
+        </div>
+      </mat-card-content>
+    </form>
+  </mat-card>

@@ -1,0 +1,51 @@
+mat-toolbar {
+    position: relative;
+    z-index: 5;
+}
+
+mat-sidenav-container {
+    height: calc(100vh - 64px);
+}
+
+:host * {
+    transition: all 500ms ease-in-out;
+
+    .selected-menu-item {
+        border-left: 5-x solid;
+        border-left-color: #37479F !important;
+    }
+
+    .menu-item {
+        border-left: 5px solid;
+        border-left-color: rgba(0,0,0,0);
+    }
+}
+
+mat-sidenav, mat-sidenav-content {
+    transition: all 500ms ease-in-out;
+  }
+
+.sidenav-header {
+    text-align: center;
+    object-fit: cover;
+
+
+    .header-text {
+        display: block;
+
+        >h2 {
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1.5rem;
+        }
+
+        >p {
+            margin: 0;
+            font-size: 0.8rem;
+        }
+    }
+
+    .hide-header-text {
+        display: none;
+    }
+}

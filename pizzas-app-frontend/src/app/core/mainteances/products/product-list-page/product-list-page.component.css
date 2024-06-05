@@ -1,0 +1,4 @@
+mat-nav-list {
+    display: flex;
+    flex-direction: row;
+}

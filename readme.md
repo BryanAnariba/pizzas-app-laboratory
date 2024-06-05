@@ -23,3 +23,8 @@
 2. Instalar Dependencias
 3. Crear un archivo `.env` basado en `.env.template`
 4. Ejecutar MS: npm run ```start:dev```
+
+## Para Frontend (Recien comence, no tuve la oportunidad de culminarlo)
+1. Instalar Dependencias
+5. Ejecutar ```ng serve -o```
+

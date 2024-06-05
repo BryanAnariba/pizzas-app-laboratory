@@ -11,4 +11,6 @@ export * from './dtos/users/update-user.dto';
 export * from './dtos/orders/create-order.dto';
 export * from './dtos/orders/update-order.dto';
 export * from './exceptions/rpc-custom-exception.filter';
+export * from './dtos/auth/sign-in';
+export * from './dtos/auth/sign-up';
 export * from './dtos/status/status.dto';
