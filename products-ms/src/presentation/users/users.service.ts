@@ -30,7 +30,7 @@ export class UsersService extends PrismaClient implements OnModuleInit {
     if (existUser) throw new RpcException({status: HttpStatus.BAD_REQUEST, message: `Email ${createUserDto.email} already exist!`});
     if (existUser && existUser.isDeleted) throw new RpcException({status: HttpStatus.BAD_REQUEST, message: `Inactive user, please contact the admin!`});
 
-    const hashedPassword = BCrypt.encryptPassword('');
+    const hashedPassword = BCrypt.encryptPassword('***********');
     return this.user.create({
       data: {
         name: createUserDto.name.toUpperCase(),
@@ -88,7 +88,7 @@ export class UsersService extends PrismaClient implements OnModuleInit {
       data: {
         name: updateUserDto.name.toUpperCase(),
         email: updateUserDto.email,
-        password: BCrypt.encryptPassword(''),
+        password: BCrypt.encryptPassword('***********'),
         phone:  updateUserDto.phone,
       },
     })

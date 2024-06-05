@@ -33,4 +33,9 @@ export class ProductsController {
   remove(@Payload('code', new ParseUUIDPipe()) code: string) {
     return this.productsService.remove(code);
   }
+
+  @MessagePattern({cmd: 'validate_order_products'})
+  validateOrderProducts (@Payload() codes: string[]) {
+    return this.productsService.validateProductsByCodes(codes);
+  }
 }

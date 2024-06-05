@@ -8,12 +8,12 @@ import { ClientModuleNames } from 'src/enums';
 export class AddressesController {
 
   constructor (
-    @Inject(ClientModuleNames.ADDRESSES_SERVICES) private readonly addressClient: ClientProxy,
+    @Inject(ClientModuleNames.NATS_SERVICES) private readonly natsClient: ClientProxy,
   ) {}
   
   @Post()
   createItem (@Body() createAddressDto: CreateAddressDto) {
-    return this.addressClient.send({cmd: 'create_address'}, createAddressDto)
+    return this.natsClient.send({cmd: 'create_address'}, createAddressDto)
       .pipe(
         catchError(
           error => {
@@ -25,7 +25,7 @@ export class AddressesController {
 
   @Get(':code')
   findItem (@Param('code', new ParseUUIDPipe()) code: string) {
-    return this.addressClient.send({cmd: 'find_address'}, {code})
+    return this.natsClient.send({cmd: 'find_address'}, {code})
       .pipe(
         catchError(error => { 
           throw new RpcException(error);
@@ -35,7 +35,7 @@ export class AddressesController {
 
   @Patch(':code')
   updateItem (@Param('code', new ParseUUIDPipe()) code: string, @Body() updateAddressDto: UpdateAddressDto) {
-    return this.addressClient.send({cmd: 'update_address'}, { code: code, ...updateAddressDto })
+    return this.natsClient.send({cmd: 'update_address'}, { code: code, ...updateAddressDto })
       .pipe(
         catchError(
           error => {
@@ -47,7 +47,7 @@ export class AddressesController {
 
   @Delete(':code')
   deleteItem (@Param('code', new ParseUUIDPipe()) code: string) {
-    return this.addressClient.send({cmd: 'delete_address'}, {code})
+    return this.natsClient.send({cmd: 'delete_address'}, {code})
       .pipe(
         catchError(
           error => {

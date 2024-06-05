@@ -13,7 +13,7 @@ import { NodeFS, UUID } from 'src/config';
 export class ProductsController {
 
   constructor (
-    @Inject(ClientModuleNames.PRODUCT_SERVICE) private readonly productsClient: ClientProxy,
+    @Inject(ClientModuleNames.NATS_SERVICES) private readonly natsClient: ClientProxy,
   ) {}
 
   @Post()
@@ -34,7 +34,7 @@ export class ProductsController {
     }),
   }))
   createItem (@UploadedFile() file: Express.Multer.File, @Body() createProductDto: CreateProductDto) {
-    return this.productsClient.send({cmd: 'create_product'}, {picture: file.filename, ...createProductDto})
+    return this.natsClient.send({cmd: 'create_product'}, {picture: file.filename, ...createProductDto})
       .pipe(
         catchError(
           error => {
@@ -47,22 +47,21 @@ export class ProductsController {
 
   @Get()
   findAllItems (@Query() paginationDto: PaginationDto) {
-    return this.productsClient.send({cmd: 'find_all_products'}, paginationDto);
+    return this.natsClient.send({cmd: 'find_all_products'}, paginationDto);
   }
 
   @Get(':code')
   findItem (@Param('code', new ParseUUIDPipe()) code: string) {
-    return this.productsClient.send({cmd: 'find_product'}, {code})
+    return this.natsClient.send({cmd: 'find_product'}, {code})
       .pipe(
         catchError(error => { 
           throw new RpcException(error);
         })
       );
   }
-
   @Patch(':code')
   updateItem (@Param('code', new ParseUUIDPipe()) code: string, @Body() updateProductDto: UpdateProductDto) {
-    return this.productsClient.send({cmd: 'update_product'}, { code: code, ...updateProductDto })
+    return this.natsClient.send({cmd: 'update_product'}, { code: code, ...updateProductDto })
       .pipe(
         catchError(
           error => {
@@ -74,7 +73,7 @@ export class ProductsController {
 
   @Delete(':code')
   deleteItem (@Param('code', new ParseUUIDPipe()) code: string) {
-    return this.productsClient.send({cmd: 'delete_product'}, {code})
+    return this.natsClient.send({cmd: 'delete_product'}, {code})
       .pipe(
         catchError(
           error => {

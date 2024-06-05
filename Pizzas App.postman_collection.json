@@ -1,0 +1,794 @@
+{
+	"info": {
+		"_postman_id": "59897f0e-6163-4119-8a64-e00778151bc7",
+		"name": "Pizzas App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10109923"
+	},
+	"item": [
+		{
+			"name": "Categories Endpoints",
+			"item": [
+				{
+					"name": "Create Category",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"MALTEADA CHOCOLATE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/categories",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Paginated Categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/categories?page=0&limit=3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"categories"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find One Category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb2RlIjoiNWU4OTAwNTctYmE3NC00OThiLWE0NzAtYjdmMjQ0NzVjN2Q2IiwiZW1haWwiOiJic2FuY2hlejNAZ21haWwuY29tIiwibmFtZSI6IkJTQU5DSEVaMyIsImlhdCI6MTcxNzU2MDMxOCwiZXhwIjoxNzE3NTYzOTE4fQ.crkdTEPUd5RYxpfq6aP95wGcTPSxMJTTwwJfyfZE0qY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/categories/da3fc777-786c-42d7-ba0f-41d6ec8cf814",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"categories",
+								"da3fc777-786c-42d7-ba0f-41d6ec8cf814"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Category",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/categories/ed027b8f-9d4b-4319-a1f7-63910591c933",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"categories",
+								"ed027b8f-9d4b-4319-a1f7-63910591c933"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Category",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Malteada de fresa y espuma\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/categories/ed027b8f-9d4b-4319-a1f7-63910591c933",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"categories",
+								"ed027b8f-9d4b-4319-a1f7-63910591c933"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products Endpoints",
+			"item": [
+				{
+					"name": "Create Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/ARIEL/Downloads/9e383fcf76d3e3947c855658c947bb3ff44373cd_SoftDrinks_434982_01.jpg"
+								},
+								{
+									"key": "name",
+									"value": "Seven Up",
+									"type": "text"
+								},
+								{
+									"key": "categoryId",
+									"value": "da3fc777-786c-42d7-ba0f-41d6ec8cf814",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "10.99",
+									"type": "text"
+								},
+								{
+									"key": "tax",
+									"value": "0.11",
+									"type": "text"
+								},
+								{
+									"key": "quantityInStock",
+									"value": "150",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Paginated Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/products?page=0&limit=5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find One Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/products/5a17ab03-eac9-4910-904a-359cd7f9e745",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products",
+								"5a17ab03-eac9-4910-904a-359cd7f9e745"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/products/5a17ab03-eac9-4910-904a-359cd7f9e745",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products",
+								"5a17ab03-eac9-4910-904a-359cd7f9e745"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"7VEN UP\",\r\n    \"categoryId\": \"da3fc777-786c-42d7-ba0f-41d6ec8cf814\",\r\n    \"price\": 9.99,\r\n    \"tax\": 0.15,\r\n    \"quantityInStock\": 35\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/products/5a17ab03-eac9-4910-904a-359cd7f9e745",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products",
+								"5a17ab03-eac9-4910-904a-359cd7f9e745"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Orders Endpoints",
+			"item": [
+				{
+					"name": "Create Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"e158621f-d1ba-4309-a3bf-5a0aba19a2bc\",\r\n    \"items\": [\r\n        {\r\n            \"productId\": \"41879733-5639-44e8-a6b5-86ba7c2ec820\",\r\n            \"quantity\": 2,\r\n            \"price\": 2.80\r\n        },\r\n        {\r\n            \"productId\": \"5a17ab03-eac9-4910-904a-359cd7f9e745\",\r\n            \"quantity\": 2,\r\n            \"price\": 3.00\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Order Status",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\": \"CANCELED\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/orders/665e660c30497021d75b0a00",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"orders",
+								"665e660c30497021d75b0a00"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb2RlIjoiNWU4OTAwNTctYmE3NC00OThiLWE0NzAtYjdmMjQ0NzVjN2Q2IiwiZW1haWwiOiJic2FuY2hlejNAZ21haWwuY29tIiwibmFtZSI6IkJTQU5DSEVaMyIsImlhdCI6MTcxNzU2MDMxOCwiZXhwIjoxNzE3NTYzOTE4fQ.crkdTEPUd5RYxpfq6aP95wGcTPSxMJTTwwJfyfZE0qY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/orders/id/665f774764c8ee9b77263777",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"orders",
+								"id",
+								"665f774764c8ee9b77263777"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Order By Status And User Logged",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb2RlIjoiNWU4OTAwNTctYmE3NC00OThiLWE0NzAtYjdmMjQ0NzVjN2Q2IiwiZW1haWwiOiJic2FuY2hlejNAZ21haWwuY29tIiwibmFtZSI6IkJTQU5DSEVaMyIsImlhdCI6MTcxNzU2MDMxOCwiZXhwIjoxNzE3NTYzOTE4fQ.crkdTEPUd5RYxpfq6aP95wGcTPSxMJTTwwJfyfZE0qY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/orders/PENDING/18a8c772-5d5a-4025-8991-fbb879d50b04?page=0&limit=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"orders",
+								"PENDING",
+								"18a8c772-5d5a-4025-8991-fbb879d50b04"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users Endpoints",
+			"item": [
+				{
+					"name": "Paginated Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/users?page=0&limit=5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"test fourth\",\r\n    \"email\": \"testFourth@gmail.com\",\r\n    \"phone\": \"2777-77-88\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb2RlIjoiNDcwMmZlZDUtN2NjOS00MTc1LWFlYTktNzAwNDA3ZGEwZjYyIiwiZW1haWwiOiJic2FuY2hlekBnbWFpbC5jb20iLCJuYW1lIjoiYnNhbmNoZXoiLCJpYXQiOjE3MTc1NjA2OTYsImV4cCI6MTcxNzU2NDI5Nn0.aJ100N-bgwopsPgUhLhGgUIdN_WN7L8mksUGJpxmE8M",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/users/5a17ab03-eac9-4910-904a-359cd7f9e745",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"5a17ab03-eac9-4910-904a-359cd7f9e745"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"test three\",\r\n    \"email\": \"testThree@gmail.com\",\r\n    \"phone\": \"2777-77-88\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/users/18a8c772-5d5a-4025-8991-fbb879d50b04",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"18a8c772-5d5a-4025-8991-fbb879d50b04"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/users/063ea219-4d03-49fe-8764-46c294d0e007",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"063ea219-4d03-49fe-8764-46c294d0e007"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Address Endpoints",
+			"item": [
+				{
+					"name": "Get Address",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/addresses/e158621f-d1ba-4309-a3bf-5a0aba19a2bc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"addresses",
+								"e158621f-d1ba-4309-a3bf-5a0aba19a2bc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Address",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"18a8c772-5d5a-4025-8991-fbb879d50b04\",\r\n    \"name\": \"comayaguela\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/addresses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"addresses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Address",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/address",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"address"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Address",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/addresses/cbec655a-a05a-4bec-88e4-a932204ffcd7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"addresses",
+								"cbec655a-a05a-4bec-88e4-a932204ffcd7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth Endpoints",
+			"item": [
+				{
+					"name": "Sign In User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"bsanchez@gmail.com\",\r\n    \"password\": \"Assd.456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/auth/sign-in",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								"sign-in"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign Up User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"bsanchez3\",\r\n    \"email\": \"bsanchez3@gmail.com\",\r\n    \"role\": \"CLIENT\",\r\n    \"phone\": \"27747755\",\r\n    \"password\": \"Assd.456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/auth/sign-up",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								"sign-up"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb2RlIjoiNWU4OTAwNTctYmE3NC00OThiLWE0NzAtYjdmMjQ0NzVjN2Q2IiwiZW1haWwiOiJic2FuY2hlejNAZ21haWwuY29tIiwibmFtZSI6IkJTQU5DSEVaMyIsImlhdCI6MTcxNzU1ODExMCwiZXhwIjoxNzE3NTYxNzEwfQ.fEVcdNqF2wyktt-rUDGCuXF5OCn7uNejN0KoasUkn1U",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/auth/verify",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								"verify"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

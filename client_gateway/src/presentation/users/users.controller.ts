@@ -8,12 +8,12 @@ import { ClientModuleNames } from 'src/enums';
 export class UsersController {
 
   constructor (
-    @Inject(ClientModuleNames.USERS_SERVICE) private readonly usersClient: ClientProxy,
+    @Inject(ClientModuleNames.NATS_SERVICES) private readonly natsClient: ClientProxy,
   ) {}
 
   @Post()
   createItem (@Body() createUserDto: CreateUserDto) {
-    return this.usersClient.send({cmd: 'create_user'}, createUserDto)
+    return this.natsClient.send({cmd: 'create_user'}, createUserDto)
       .pipe(
         catchError(
           error => {
@@ -25,12 +25,12 @@ export class UsersController {
 
   @Get()
   findAllItems (@Query() paginationDto: PaginationDto) {
-    return this.usersClient.send({cmd: 'find_all_users'}, paginationDto);
+    return this.natsClient.send({cmd: 'find_all_users'}, paginationDto);
   }
 
   @Get(':code')
   findItem (@Param('code', new ParseUUIDPipe()) code: string) {
-    return this.usersClient.send({cmd: 'find_user'}, {code})
+    return this.natsClient.send({cmd: 'find_user'}, {code})
       .pipe(
         catchError(error => { 
           throw new RpcException(error);
@@ -40,7 +40,7 @@ export class UsersController {
 
   @Patch(':code')
   updateItem (@Param('code', new ParseUUIDPipe()) code: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.usersClient.send({cmd: 'update_user'}, { code: code, ...updateUserDto })
+    return this.natsClient.send({cmd: 'update_user'}, { code: code, ...updateUserDto })
       .pipe(
         catchError(
           error => {
@@ -52,7 +52,7 @@ export class UsersController {
 
   @Delete(':code')
   deleteItem (@Param('code', new ParseUUIDPipe()) code: string) {
-    return this.usersClient.send({cmd: 'delete_user'}, {code})
+    return this.natsClient.send({cmd: 'delete_user'}, {code})
       .pipe(
         catchError(
           error => {

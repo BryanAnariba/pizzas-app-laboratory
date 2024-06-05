@@ -1,4 +1,4 @@
-import { genSaltSync, hashSync } from "bcrypt";
+import { genSaltSync, hashSync } from "bcryptjs";
 
 export class BCrypt {
 

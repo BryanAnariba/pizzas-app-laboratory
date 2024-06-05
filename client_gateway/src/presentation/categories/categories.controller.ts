@@ -8,12 +8,12 @@ import { CreateCategoryDto, PaginationDto, UpdateCategoryDto } from 'src/domain'
 export class CategoriesController {
 
   constructor (
-    @Inject(ClientModuleNames.CATEGORY_SERVICE) private readonly categoriesClient: ClientProxy,
+    @Inject(ClientModuleNames.NATS_SERVICES) private readonly natsClient: ClientProxy,
   ) {}
 
   @Post()
   createItem (@Body() createCategoryDto: CreateCategoryDto) {
-    return this.categoriesClient.send({cmd: 'create_category'}, createCategoryDto)
+    return this.natsClient.send({cmd: 'create_category'}, createCategoryDto)
       .pipe(
         catchError(
           error => {
@@ -25,12 +25,12 @@ export class CategoriesController {
 
   @Get()
   findAllItems (@Query() paginationDto: PaginationDto) {
-    return this.categoriesClient.send({cmd: 'find_all_categories'}, paginationDto);
+    return this.natsClient.send({cmd: 'find_all_categories'}, paginationDto);
   }
 
   @Get(':code')
   findItem (@Param('code', new ParseUUIDPipe()) code: string) {
-    return this.categoriesClient.send({cmd: 'find_category'}, {code})
+    return this.natsClient.send({cmd: 'find_category'}, {code})
       .pipe(
         catchError(error => { 
           throw new RpcException(error);
@@ -40,7 +40,7 @@ export class CategoriesController {
 
   @Patch(':code')
   updateItem (@Param('code', new ParseUUIDPipe()) code: string, @Body() updateCategoryDto: UpdateCategoryDto) {
-    return this.categoriesClient.send({cmd: 'update_category'}, { code: code, ...updateCategoryDto })
+    return this.natsClient.send({cmd: 'update_category'}, { code: code, ...updateCategoryDto })
       .pipe(
         catchError(
           error => {
@@ -52,7 +52,7 @@ export class CategoriesController {
 
   @Delete(':code')
   deleteItem (@Param('code', new ParseUUIDPipe()) code: string) {
-    return this.categoriesClient.send({cmd: 'delete_category'}, {code})
+    return this.natsClient.send({cmd: 'delete_category'}, {code})
       .pipe(
         catchError(
           error => {
