@@ -7,6 +7,7 @@ import { MessagePattern, Payload } from '@nestjs/microservices';
 
 @Controller('categories')
 export class CategoriesController {
+  
   constructor(private readonly categoriesService: CategoriesService) {}
 
   @MessagePattern({cmd: 'create_category'})

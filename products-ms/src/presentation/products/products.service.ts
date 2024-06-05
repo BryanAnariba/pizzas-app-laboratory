@@ -43,7 +43,6 @@ export class ProductsService extends PrismaClient implements OnModuleInit {
         }
       });
     } catch (error) {
-      
       if (error instanceof RpcException) throw error;
       throw new RpcException({status: HttpStatus.INTERNAL_SERVER_ERROR, message: error});
     }

@@ -33,3 +33,34 @@ model Product {
 
   @@index([isDeleted])
 }
+
+model User {
+  code String @id @default(uuid())
+  addresses Address[]
+  name String
+  email String
+  password String
+  phone String
+  role Role  @default(CLIENT)
+  isDeleted Boolean @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([isDeleted])
+}
+
+model Address {
+  code String @id @default(uuid())
+  user User @relation(fields: [userId], references: [code])
+  userId String
+  name String
+  isDeleted Boolean @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum Role {
+  CLIENT
+  USER
+  ADMIN
+}
