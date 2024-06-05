@@ -1,0 +1,4 @@
+export enum ClientModuleNames {
+  PRODUCT_SERVICE = 'PRODUCT_SERVICE',
+  CATEGORY_SERVICE = 'CATEGORY_SERVICE',
+}
